@@ -1,35 +1,77 @@
 import os
 import gradio as gr
-import openai
+from openai import OpenAI
 
-# Load API key from Hugging Face secret
-openai.api_key = os.environ["OPENAI_API_KEY"]
+# Get OpenAI API key from Hugging Face secret
+openai_api_key = os.getenv("OPENAI_API_KEY")
 
-def clarity_ai(input_text):
-    prompt = f"""
-    The user has written the following about their current situation, goals, or dilemma:
+if not openai_api_key:
+    raise ValueError("OPENAI_API_KEY environment variable not set in Hugging Face secrets.")
 
-    "{input_text}"
+# Initialize OpenAI client
+client = OpenAI(api_key=openai_api_key)
 
-    Give a structured response that includes:
-    1. Logic-based analysis
-    2. Emotional insight
-    3. Potential blind spots
-    4. Three suggested next actions
-    5. A mindset shift or motivational quote
-    """
+# System prompt for GPT
+system_prompt = """
+You are ClarityGPT, an expert mental clarity and decision-making assistant.
+
+When a user pastes their thoughts, dilemmas, or goals, your job is to:
+
+1. Understand their thought process or challenge deeply.
+2. Break it down into components: logic, emotion, blind spots.
+3. Offer a clear 3-step action plan.
+4. Provide one short mindset reframe or motivational quote.
+
+Your tone is calm, honest, structured, and empowering. Avoid fluff.
+Always structure your response with the following headers:
+- 🔍 Analysis
+- 💡 Insights
+- ✅ Action Plan (3 steps)
+- 🧠 Mindset Shift
+"""
+
+def clarify(input_text):
+    if not input_text or input_text.strip() == "":
+        return "Please enter some thoughts, dilemmas, or goals."
 
     try:
-        response = openai.ChatCompletion.create(
-            model="gpt-4",
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0.7,
-            max_tokens=500,
+        # Chat completion using new SDK
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": input_text}
+            ],
+            temperature=0.7
         )
-        return response['choices'][0]['message']['content'].strip()
+
+        reply = response.choices[0].message.content
+        return reply
+
     except Exception as e:
-        return f"Error: {e}"
+        return f"❌ Error: {str(e)}"
 
-demo = gr.Interface(fn=clarity_ai, inputs="text", outputs="text", title="Pacavita AI")
+# Set up Gradio UI
+description = """
+### 🧠 Pacavita - Mental Clarity Assistant
 
-demo.launch()
+Paste your current thoughts, dilemma, or goal. Get a structured AI-powered breakdown:
+- 🔍 Logic, emotion, and blind spots
+- ✅ 3 recommended next steps
+- 🧠 A mindset shift to help you move forward
+
+Powered by OpenAI. Built with 💡 by Giuseppe552.
+"""
+
+iface = gr.Interface(
+    fn=clarify,
+    inputs=gr.Textbox(lines=10, placeholder="Paste your current thoughts, dilemma, or goal..."),
+    outputs=gr.Textbox(lines=20, label="Clarity Response"),
+    title="Pacavita - Clarity AI",
+    description=description,
+    allow_flagging="never"
+)
+
+# Launch the app
+if __name__ == "__main__":
+    iface.launch()
