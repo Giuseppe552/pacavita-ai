@@ -1,3 +1,34 @@
+
+---
+title: Pacavita
+emoji: 🧠
+colorFrom: indigo
+colorTo: pink
+sdk: gradio
+sdk_version: "4.25.0"
+app_file: app.py
+pinned: false
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Pacavita
 
 > Think clearly. Act decisively.
