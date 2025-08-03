@@ -1,29 +1,35 @@
+import os
 import gradio as gr
 import openai
-import os
 
-openai.api_key = os.getenv("OPENAI_API_KEY")  # Store key as HF Secret
+# Load API key from Hugging Face secret
+openai.api_key = os.environ["OPENAI_API_KEY"]
 
-def clarify(text):
+def clarity_ai(input_text):
     prompt = f"""
-You're Clarity AI, an assistant helping users gain mental clarity.
+    The user has written the following about their current situation, goals, or dilemma:
 
-The user just wrote: "{text}"
+    "{input_text}"
 
-1. Analyze and summarize their message in terms of logic, emotion, and blind spots.
-2. Suggest 3 clear actions they can take today.
-3. Offer one short mindset shift, quote, or reframe to help them move forward.
+    Give a structured response that includes:
+    1. Logic-based analysis
+    2. Emotional insight
+    3. Potential blind spots
+    4. Three suggested next actions
+    5. A mindset shift or motivational quote
+    """
 
-Respond in clean sections:
-- Analysis:
-- 3 Suggested Actions:
-- Mindset Shift:
-"""
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[{"role": "user", "content": prompt}]
-    )
-    return response["choices"][0]["message"]["content"]
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-4",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.7,
+            max_tokens=500,
+        )
+        return response['choices'][0]['message']['content'].strip()
+    except Exception as e:
+        return f"Error: {e}"
 
-demo = gr.Interface(fn=clarify, inputs="text", outputs="text", title="Clarity AI")
+demo = gr.Interface(fn=clarity_ai, inputs="text", outputs="text", title="Pacavita AI")
+
 demo.launch()
