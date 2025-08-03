@@ -45,4 +45,4 @@ Designed to simulate talking to a personal coach, therapist, or mentor in under 
 
 **Giuseppe** – Mathematics Graduate & aspiring Software Engineer  
 GitHub: [@giuseppe552](https://github.com/giuseppe552)  
-LinkedIn: *Add your link here*
+LinkedIn: https://www.linkedin.com/in/giuseppe552/
