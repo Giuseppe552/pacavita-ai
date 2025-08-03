@@ -1,13 +1,21 @@
----
-title: Clarity Ai
-emoji: 👀
-colorFrom: blue
-colorTo: blue
-sdk: gradio
-sdk_version: 5.39.0
-app_file: app.py
-pinned: false
-license: mit
----
+# Pacavita
 
-Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
+> Think clearly. Act decisively.
+
+Pacavita is an AI tool that helps you gain clarity, make better decisions, and move forward — faster.
+
+[🌐 Try the live demo](https://huggingface.co/spaces/giuseppe552/pacavita)
+
+## Features
+- 🧠 Structured AI feedback
+- 🔍 Highlights blind spots
+- ✅ Suggests next steps
+
+## Tech
+- Python · Gradio · OpenAI · Hugging Face
+
+## License
+MIT
+
+## Author
+[@Giuseppe552](https://github.com/giuseppe552)
