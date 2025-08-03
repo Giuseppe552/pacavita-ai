@@ -4,7 +4,7 @@
 
 Pacavita is an AI tool that helps you gain clarity, make better decisions, and move forward — faster.
 
-[🌐 Try the live demo](https://huggingface.co/spaces/giuseppe552/pacavita)
+[🌐 Try the live demo](https://huggingface.co/spaces/giuseppe552/pacavita-app)
 
 ## Features
 - 🧠 Structured AI feedback
