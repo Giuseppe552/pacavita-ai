@@ -1,7 +1,8 @@
 import gradio as gr
 import openai
+import os
 
-openai.api_key = "your_openai_key"  # or use a free open-source model
+openai.api_key = os.getenv("OPENAI_API_KEY")  # Store key as HF Secret
 
 def clarify(text):
     prompt = f"""
@@ -22,7 +23,7 @@ Respond in clean sections:
         model="gpt-3.5-turbo",
         messages=[{"role": "user", "content": prompt}]
     )
-    return response['choices'][0]['message']['content']
+    return response["choices"][0]["message"]["content"]
 
 demo = gr.Interface(fn=clarify, inputs="text", outputs="text", title="Clarity AI")
 demo.launch()
