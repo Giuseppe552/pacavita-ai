@@ -36,7 +36,8 @@ Designed to simulate talking to a personal coach, therapist, or mentor in under 
 
 > “Pacavita was built to combine technology and introspection.”
 
-✨ In Progress: Framer Frontend (Early Concept)
+**
+✨ In Progress: Framer Frontend (Early Concept)**
 A Framer-based interface is currently being developed to improve accessibility and user experience.
 Goals include:
 
