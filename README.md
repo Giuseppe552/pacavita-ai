@@ -4,7 +4,9 @@ Pacavita is a lightweight AI-powered clarity tool that helps users make better d
 
 ## 🚀 Live Demo
 
-Try it here → [Pacavita on Hugging Face](https://huggingface.co/spaces/giuseppe552/pacavita-app)
+🧪 Try the backend here on Hugging Face→ [Pacavita on Hugging Face](https://huggingface.co/spaces/giuseppe552/pacavita-app)
+🎨 Preview the Framer front-end (early concept) →  https://pacavita.framer.website/
+
 
 ## 🔍 How It Works
 
@@ -20,6 +22,7 @@ Try it here → [Pacavita on Hugging Face](https://huggingface.co/spaces/giusepp
 - Python (Gradio)
 - OpenAI API
 - Hugging Face Spaces
+- Framer (for frontend concept)
 
 ## 📁 Files
 
@@ -33,11 +36,28 @@ Designed to simulate talking to a personal coach, therapist, or mentor in under 
 
 > “Pacavita was built to combine technology and introspection.”
 
+✨ In Progress: Framer Frontend (Early Concept)
+A Framer-based interface is currently being developed to improve accessibility and user experience.
+Goals include:
+
+Clean, distraction-free UI with mobile support
+
+Text input with conversational layout
+
+Integration with the Hugging Face backend (via API)
+
+📍 Current status: UI prototype only, integration in progress
+👉 View it here - https://pacavita.framer.website/
+
+
+
 ## ✨ Future Ideas
 
 - Add conversational memory
 - Store answers for journaling
 - Mobile-friendly UI (Framer integration)
+- Multi-language support
+- More coaching “modes” (e.g. career, emotional, productivity)
 
 ---
 
